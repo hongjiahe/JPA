@@ -9,16 +9,29 @@ public class Test2 {
 
     @org.junit.Test
     public void test() {
-        System.out.println("123123");
-
         User user = new User();
-        user.setName("123213");
+        user.setName("hohe2");
         user.setDate(new Date());
 
         EntityManager entityManager = JPAUtils.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(user);
+        /*User user = entityManager.getReference(User.class, 2);
+        //entityManager.remove(user);
+        user.setName("update_h123");
+        user.setDate(new Date());
+        entityManager.merge(user);*/
+        //User user = entityManager.find(User.class, 2);
+
         entityManager.getTransaction().commit();
         entityManager.close();
+
     }
+
+
+
+
+
+
+
 }

@@ -2,44 +2,34 @@ package com.study.jpa._01_crud;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+
+@Setter
+@Getter
+@ToString
+
+@Entity(name = "User")
 @Table(name = "t_user")
 public class User  {
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     @Id
     @GeneratedValue //默认是自动生成
+
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name")
+    //@Transient  不进行映射
     private String name;
+
+    @Column(name = "date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
 
